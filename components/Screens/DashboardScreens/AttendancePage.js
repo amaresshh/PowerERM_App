@@ -1,11 +1,10 @@
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import React from "react";
-import { SafeAreaView, Platform, StatusBar } from "react-native";
 
-const Calender = () => {
+const AttendancePage = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.paragraph}>This is Calender Page</Text>
+      <Text style={styles.paragraph}>This is Attendance Page</Text>
       <Text>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt minus
         earum et, esse omnis minima dolorem debitis sequi provident, sit cumque!
@@ -15,7 +14,7 @@ const Calender = () => {
   );
 };
 
-export default Calender;
+export default AttendancePage;
 
 const styles = StyleSheet.create({
   container: {

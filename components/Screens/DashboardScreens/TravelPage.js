@@ -1,21 +1,26 @@
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { FloatingAction } from "react-native-floating-action";
 import React from "react";
-import { SafeAreaView, Platform, StatusBar } from "react-native";
 
-const Calender = () => {
+const TravelPage = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.paragraph}>This is Calender Page</Text>
+      <Text style={styles.paragraph}>This is Travel Page</Text>
       <Text>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt minus
         earum et, esse omnis minima dolorem debitis sequi provident, sit cumque!
         Error omnis dicta a voluptatum placeat nulla commodi accusantium.
       </Text>
+      <FloatingAction
+        onPressMain={() => {
+          navigation.navigate("Dashboard");
+        }}
+      />
     </SafeAreaView>
   );
 };
 
-export default Calender;
+export default TravelPage;
 
 const styles = StyleSheet.create({
   container: {

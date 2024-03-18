@@ -8,9 +8,13 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import LeaveStatus from "./ScreenComponents/LeaveStatus";
+import AlertBox from "./ScreenComponents/AlertBox";
+
+const { width } = Dimensions.get("window");
 
 const Attendance = {
   presentDays: 2,
@@ -79,16 +83,32 @@ const getCurrentTime = () => {
 };
 
 const Home = () => {
-  const [checkInStatus, setCheckInStatus] = useState(false);
-  const [checkInTime, setCheckInTime] = useState("-- : -- ");
-  const [checkOutTime, setCheckOutTime] = useState("-- : --");
+  const [checkStatus, setCheckStatus] = useState(false);
+  const [checkInTime, setCheckInTime] = useState({
+    str: "-- : --",
+    flag: false,
+  });
+  const [checkOutTime, setCheckOutTime] = useState({
+    str: "-- : --",
+    flag: false,
+  });
 
-  const handleCheckIn = () => {
-    setCheckInStatus(!checkInStatus);
-    if (checkInStatus) {
-      setCheckOutTime(getCurrentTime());
-    } else {
-      setCheckInTime(getCurrentTime());
+  const handleCheckInCheckOut = () => {
+    // setCheckStatus(!checkStatus);
+    // if (checkStatus) {
+    //   checkOutTime.flag === "-- : --"
+    //     ? setCheckOutTime(getCurrentTime())
+    //     : null;
+    // } else {
+    //   checkInTime.flag === "-- : --" ? setCheckInTime(getCurrentTime()) : null;
+    // }
+    if (checkInTime.flag === false || checkOutTime.flag === false) {
+      setCheckStatus(!checkStatus);
+      if (checkStatus) {
+        setCheckOutTime({ str: getCurrentTime(), flag: true });
+      } else {
+        setCheckInTime({ str: getCurrentTime(), flag: true });
+      }
     }
   };
 
@@ -105,11 +125,11 @@ const Home = () => {
               <View style={styles.checkin_checkout}>
                 <View style={{ alignItems: "center" }}>
                   <Text>Check In</Text>
-                  <Text style={styles.time}>{checkInTime}</Text>
+                  <Text style={styles.time}>{checkInTime.str}</Text>
                 </View>
                 <View style={{ alignItems: "center" }}>
                   <Text>Check Out</Text>
-                  <Text style={styles.time}>{checkOutTime}</Text>
+                  <Text style={styles.time}>{checkOutTime.str}</Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
@@ -121,9 +141,9 @@ const Home = () => {
             <TouchableOpacity
               delayPressIn={150}
               activeOpacity={1}
-              onPress={handleCheckIn}
+              onPress={handleCheckInCheckOut}
             >
-              {checkInStatus ? (
+              {checkStatus ? (
                 <View
                   style={[styles.cardImage, { backgroundColor: "#ed3d31" }]}
                 >
@@ -186,7 +206,13 @@ const Home = () => {
           </Text>
 
           {leaveStatus.map((leave, index) => {
-            return <LeaveStatus key={index} leaveStatus={leave} />;
+            return (
+              <LeaveStatus
+                styleProp={{ width: "90%", backgroundColor: "red" }}
+                key={index}
+                leaveStatus={leave}
+              />
+            );
           })}
         </View>
       </ScrollView>
@@ -199,7 +225,7 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     // paddingTop: 20,
   },
   card: {
@@ -239,8 +265,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   circleCard: {
-    width: 100,
-    height: 100,
+    width: width * 0.2,
+    height: width * 0.2,
     borderRadius: 100 / 2,
     justifyContent: "center",
     alignItems: "center",

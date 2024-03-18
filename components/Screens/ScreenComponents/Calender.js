@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Platform, Dimensions } from "react-native";
 import React from "react";
+
+const { width } = Dimensions.get("window");
 
 const Calender = ({ month, day }) => {
   return (
@@ -28,8 +30,10 @@ export default Calender;
 
 const styles = StyleSheet.create({
   calender: {
-    width: 90,
-    height: 90,
+    // width: Platform.OS === "ios" ? 80 : 90,
+    // height: Platform.OS === "ios" ? 80 : 90,
+    width: width * 0.2,
+    height: width * 0.2,
     marginRight: 10,
   },
   topPart: {

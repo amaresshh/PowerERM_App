@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "powererm_app",
+    "name": "Octaware",
     "slug": "powererm_app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/powererm-imgs/octaware_logo_design.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "black"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/powererm-imgs/octaware_logo_design.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.amaresshh_b.powererm_app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "48dc7a64-52ca-4dcd-a56e-22cb9318ceb1"
+      }
     }
   }
 }

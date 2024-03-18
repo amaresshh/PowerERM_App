@@ -10,7 +10,7 @@ import OnboardingScreen from "./OnboardingScreen";
 
 const Stack = createNativeStackNavigator();
 
-const AppNavigation = () => {
+const AppNavStack = () => {
   // const navigation = useNavigation();
 
   return (
@@ -42,4 +42,4 @@ const AppNavigation = () => {
   );
 };
 
-export default AppNavigation;
+export default AppNavStack;

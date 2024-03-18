@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Platform, Dimensions } from "react-native";
 import Calender from "./Calender";
 import React from "react";
 import { Image } from "react-native";
 
-const LeaveStatus = ({ leaveStatus }) => {
+const { width } = Dimensions.get("window");
+
+const LeaveStatus = ({ leaveStatus, styleProp }) => {
   return (
     <View>
       <View style={styles.container}>
@@ -16,24 +18,20 @@ const LeaveStatus = ({ leaveStatus }) => {
         </View>
         {leaveStatus.status === "approved" ? (
           <Image
-            style={{ width: 50, height: 50 }}
+            style={styles.icons}
             source={require("../../../assets/powererm-imgs/approved_1.png")}
           />
         ) : leaveStatus.status === "pending" ? (
           <Image
-            style={{ width: 50, height: 50 }}
+            style={styles.icons}
             source={require("../../../assets/powererm-imgs/pending_1.png")}
           />
         ) : (
           <Image
-            style={{ width: 50, height: 50 }}
+            style={styles.icons}
             source={require("../../../assets/powererm-imgs/rejected_1.png")}
           />
         )}
-        {/* <Image
-          style={{ width: 50, height: 50 }}
-          source={require("../../../assets/powererm-imgs/rejected.png")}
-        /> */}
       </View>
     </View>
   );
@@ -52,5 +50,10 @@ const styles = StyleSheet.create({
     elevation: 4, // for Android
     shadowColor: "black", // for iOS
     marginVertical: 10,
+    width: "100%",
+  },
+  icons: {
+    width: width * 0.1,
+    height: width * 0.1,
   },
 });

@@ -1,19 +1,11 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { Image, TouchableOpacity, Platform } from "react-native";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./Screens/Home";
 import Profile from "./Screens/Profile";
-import Dashboard from "./Screens/Dashboard";
 import Calender from "./Screens/Calender";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import DashboardStack from "./DashboardStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +18,7 @@ const MainTabContainer = ({ navigation }) => {
           let iconName;
           if (route.name === "Home") {
             iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "Dashboard") {
+          } else if (route.name === "DashboardStack") {
             iconName = focused ? "apps" : "apps-outline";
           } else if (route.name === "Profile") {
             iconName = focused ? "person" : "person-outline";
@@ -38,13 +30,13 @@ const MainTabContainer = ({ navigation }) => {
               name={iconName}
               size={size}
               color={color}
-              style={{ fontSize: 30 }}
+              style={{ fontSize: Platform.OS === "ios" ? 25 : 30 }}
             />
           );
         },
         // headerShown: false,
         tabBarStyle: {
-          height: 60,
+          height: Platform.OS === "ios" ? "10%" : "7%",
           backgroundColor: "white",
         },
         tabBarShowLabel: false,
@@ -80,10 +72,11 @@ const MainTabContainer = ({ navigation }) => {
         component={Home}
       />
       <Tab.Screen
-        name="Dashboard"
-        component={Dashboard}
+        name="DashboardStack"
+        component={DashboardStack}
         options={{
-          headerTitle: "Dashboard Screen",
+          headerShown: false,
+          headerTitle: "Dashboard",
           headerLeft: () => (
             <Ionicons
               name="arrow-back-outline"
@@ -93,6 +86,7 @@ const MainTabContainer = ({ navigation }) => {
               onPress={() => navigation.navigate("Home")}
             />
           ),
+          // headerShown={false},
         }}
       />
       <Tab.Screen

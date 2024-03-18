@@ -11,7 +11,7 @@ import * as Animatable from "react-native-animatable";
 // import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
@@ -30,11 +30,11 @@ const SplashScreen = ({ navigation }) => {
         style={{ justifyContent: "center", alignItems: "center" }}
       >
         <Image
-          style={{ width: width * 0.4, height: width * 0.4 }}
+          style={{ width: width * 0.3, height: width * 0.3, borderRadius: 10 }}
           source={require("../assets/powererm-imgs/octaware_logo_design.png")}
         />
         <Image
-          style={{ marginTop: 20, height: 75, width: 240 }}
+          style={{ marginTop: 20, height: width * 0.1, width: width * 0.34 }}
           source={require("../assets/powererm-imgs/octaware_logo_text.png")}
         />
         {/* <Button
@@ -62,10 +62,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: 300,
-    height: 200,
+    width: width * 0.35,
+    height: width * 0.35,
     // backgroundColor: "gray",
-    marginTop: -50,
+    marginTop: -(width * 0.08),
     zIndex: -1,
   },
 });

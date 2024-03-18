@@ -23,7 +23,12 @@ const Login = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Image
-          style={{ width: width * 0.2, height: width * 0.2, marginBottom: 20 }}
+          style={{
+            width: width * 0.2,
+            height: width * 0.2,
+            marginBottom: 20,
+            borderRadius: 10,
+          }}
           source={require("../assets/powererm-imgs/octaware_logo_design.png")}
         />
         <Text style={styles.title}>Welcome Back to PowerERM</Text>
