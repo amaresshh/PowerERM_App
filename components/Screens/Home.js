@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import LeaveStatus from "./ScreenComponents/LeaveStatus";
-import AlertBox from "./ScreenComponents/AlertBox";
 
 const { width } = Dimensions.get("window");
 

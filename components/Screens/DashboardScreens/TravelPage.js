@@ -12,8 +12,8 @@ const TravelPage = ({ navigation }) => {
         Error omnis dicta a voluptatum placeat nulla commodi accusantium.
       </Text>
       <FloatingAction
-        onPressMain={() => {
-          navigation.navigate("Dashboard");
+        onOpen={() => {
+          navigation.navigate("AddTravelApplication");
         }}
       />
     </SafeAreaView>

@@ -40,7 +40,7 @@ const Dashboard = ({ navigation }) => {
       id: 4,
       title: "Travel",
       image: require("../../assets/powererm-imgs/travel_2.png"),
-      screen: "TravelPage",
+      screen: "TravelStack",
     },
     {
       id: 5,

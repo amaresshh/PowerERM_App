@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LeavePage from "./Screens/DashboardScreens/LeavePage";
 import AttendancePage from "./Screens/DashboardScreens/AttendancePage";
 import TravelPage from "./Screens/DashboardScreens/TravelPage";
+import TravelStack from "./Screens/DashboardScreens/TravelStack";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,9 +40,9 @@ const DashboardStack = () => {
         component={AttendancePage}
       />
       <Stack.Screen
-        name="TravelPage"
-        options={{ headerShown: true, title: "Travel Page" }}
-        component={TravelPage}
+        name="TravelStack"
+        options={{ headerShown: false, title: "Travel Stack" }}
+        component={TravelStack}
       />
     </Stack.Navigator>
   );
